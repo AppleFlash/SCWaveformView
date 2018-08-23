@@ -90,4 +90,6 @@
  */
 @property (readonly, nonatomic) CMTime actualAssetDuration;
 
+@property (assign, nonatomic) BOOL shouldChangeChannelCornerRadius;
+
 @end

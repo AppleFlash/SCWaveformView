@@ -241,7 +241,10 @@
                 
                 layer.frame = CGRectMake((newFirstVisibleIdx + idx) * bandWidth, _channelsPadding * channel + heightPerChannel * channel + halfHeightPerChannel - pixelHeight,
                                          _lineWidthRatio / pixelRatio, pixelHeight * 2);
-                                
+                
+                if (shouldChangeChannelCornerRadius) {
+                    layer.cornerRadius = layer.frame.size.width / 2;
+                }
                 layer.waveformTime = time;
             }
         }];
