@@ -11,17 +11,7 @@
 
 #define noiseFloor (-50.0)
 
-#if !defined __IPHONE_10_0 || __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_10_0
-@protocol SCLayerDelegate
-@end
-#else
-@protocol SCLayerDelegate<CALayerDelegate>
-@end
-#endif
-
-@interface SCWaveformLayerDelegate : NSObject<SCLayerDelegate>
-
-@end
+@interface SCWaveformLayer : CALayer
 
 @property (assign, nonatomic) CMTime waveformTime;
 
@@ -242,7 +232,7 @@
                 layer.frame = CGRectMake((newFirstVisibleIdx + idx) * bandWidth, _channelsPadding * channel + heightPerChannel * channel + halfHeightPerChannel - pixelHeight,
                                          _lineWidthRatio / pixelRatio, pixelHeight * 2);
                 
-                if (shouldChangeChannelCornerRadius) {
+                if (_shouldChangeChannelCornerRadius) {
                     layer.cornerRadius = layer.frame.size.width / 2;
                 }
                 layer.waveformTime = time;
